@@ -14,5 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/appTopCategory', [AppTopCategoryController::class, 'getAppTopPositions']);
-
+Route::middleware('throttle:5,1')->get('/appTopCategory', [AppTopCategoryController::class, 'getAppTopPositions']);
