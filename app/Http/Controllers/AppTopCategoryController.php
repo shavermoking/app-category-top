@@ -22,7 +22,6 @@ class AppTopCategoryController extends Controller
             ], 400);
         }
 
-        // Получаем данные из базы для указанной даты
         $positions = AppTopPosition::forDate((string) $date)->get();
 
         if ($positions->isEmpty()) {
@@ -33,7 +32,6 @@ class AppTopCategoryController extends Controller
             ], 404);
         }
 
-        // Преобразуем данные в нужный формат
         $result = [];
         foreach ($positions as $position) {
             $result[$position->category] = $position->position;

@@ -15,8 +15,8 @@ class AppTopCategoryService implements IAppTopCategory
 
     public function __construct()
     {
-        $this->baseUrl = 'https://api.apptica.com/package/top_history/';
-        $this->apiKey = 'fVN5Q9KVOlOHDx9mOsKPAQsFBlEhBOwguLkNEDTZvKzJzT3l';
+        $this->baseUrl = config('services.apptica.api_host');
+        $this->apiKey = config('services.apptica.api_key');
     }
 
     public function fetchAndSaveData(int $applicationId, int $countryId, string $dateFrom, string $dateTo): void
@@ -62,7 +62,7 @@ class AppTopCategoryService implements IAppTopCategory
         int $category,
         int $position
     ): void {
-        AppTopPosition::updateOrCreate(
+        AppTopPosition::query()->updateOrCreate(
             [
                 'application_id' => $applicationId,
                 'country_id' => $countryId,

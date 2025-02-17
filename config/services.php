@@ -31,4 +31,9 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'apptica' => [
+        'api_host' => env('APPTICA_API_HOST'),
+        'api_key' => env('APPTICA_API_KEY'),
+    ],
+
 ];
